@@ -25,9 +25,10 @@ def load_model():
     wav2vec2_processor = Wav2Vec2Processor.from_pretrained(wav2vec2_model_name)
     wav2vec2_model = Wav2Vec2ForCTC.from_pretrained(wav2vec2_model_name).to(device)
     return wav2vec2_processor,wav2vec2_model
-wav2vec2_processor,wav2vec2_model=load_model()
-fetch_url='https://kcmohrd.mwdbe.com/FrontEnd/SearchCertifiedDirectory.asp?XID=4600&TN=kcmohrd'
 
+wav2vec2_processor,wav2vec2_model=load_model()
+
+fetch_url='https://kcmohrd.mwdbe.com/FrontEnd/SearchCertifiedDirectory.asp?XID=4600&TN=kcmohrd'
 # fetch_url='https://ny.newnycontracts.com/FrontEnd/searchcertifieddirectory.asp'
 # fetch_url='https://columbus.diversitycompliance.com/FrontEnd/searchcertifieddirectory.asp'
 
