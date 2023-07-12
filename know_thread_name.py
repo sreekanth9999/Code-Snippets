@@ -1,6 +1,10 @@
 
 import queue
 from threading import Thread,current_thread
+import warnings
+warnings.filterwarnings("ignore")
+
+logging.basicConfig(filename='logfile.log',level=logging.INFO,format='%(asctime)s %(threadName)s %(message)s ')
 
 def do_work(item):
     try:
@@ -31,5 +35,5 @@ for i in range (20):
     t.daemon=True
     t.start()
  
- 
+    
 q.join()
