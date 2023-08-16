@@ -1,0 +1,9 @@
+from joblib import Parallel, delayed
+
+
+def f(x):
+    return x*x
+
+res = Parallel(n_jobs=5)(delayed(f)(x) for x in list(range(0,10000)))
+
+print(res)
