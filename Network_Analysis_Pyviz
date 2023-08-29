@@ -1,0 +1,16 @@
+from pyvis.network import Network
+from IPython.display import display, HTML
+
+net = Network(notebook=True,cdn_resources='remote')
+
+net.add_nodes(
+    [1, 2, 3, 4, 5, 6],  # node ids
+    label=['Supplier Diversity', 'WBENC', 'NMSDC', 'Georgia', 'Massachussets' , 'Supplier Gateway'],  # node labels
+    color=['#d47415', '#22b512', '#42adf5', '#4a21b0', '#e627a9','#d6e627'] ,
+    value = [10,5,7,3,2,6]# node colors (HEX)
+)
+net.add_edges([(1, 2), (1, 3), (1, 4), (1, 5), (1, 6),
+               (2,3),(3,4),(4,5),(5,6),(6,1), (2,6)
+              ])
+
+net.show('graph.html')
