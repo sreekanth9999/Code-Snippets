@@ -3,6 +3,10 @@ from IPython.display import display, HTML
 
 net = Network(notebook=True,cdn_resources='remote')
 
+
+color_node = ["#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)])
+             for i in range(length)]
+
 net.add_nodes(
     [1, 2, 3, 4, 5, 6],  # node ids
     label=['Supplier Diversity', 'WBENC', 'NMSDC', 'Georgia', 'Massachussets' , 'Supplier Gateway'],  # node labels
