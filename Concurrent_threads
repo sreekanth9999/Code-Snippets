@@ -1,0 +1,18 @@
+
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import progressbar
+
+
+ widget1 = ['Scraping_Page --> ',progressbar.SimpleProgress(),' ', progressbar.Bar('>', '[', ']', '-'),' '
+                 , progressbar.ETA(),' ',progressbar.Timer()]
+  bar = progressbar.ProgressBar(maxval=len(each_page_url_list),widgets=widget1).start()
+  data={}    
+
+# Approach-1 : threads 
+  counter=0
+  with ThreadPoolExecutor() as executor:
+      processes={k:executor.submit(extract_page_source, k)  for k in each_page_url_list}
+      for p,q in processes.items():
+          data[p]=q.result().text
+          counter+=1
+          bar.update(counter)
