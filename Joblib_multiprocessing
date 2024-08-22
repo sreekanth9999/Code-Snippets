@@ -4,6 +4,30 @@ from joblib import Parallel, delayed
 def f(x):
     return x*x
 
+#this for a list
 res = Parallel(n_jobs=5)(delayed(f)(x) for x in list(range(0,10000)))
 
 print(res)
+
+
+#for a dataframe:
+# import pandas as pd
+# from joblib import Parallel, delayed
+# from tqdm import tqdm
+# from multiprocessing import Pool, cpu_count
+
+# loaded_model=mlflow_model
+# def process_row(row):
+#     row_df = pd.DataFrame([row])
+#     return loaded_model.predict(row_df)
+
+
+# def parallelize_apply(df, func, num_cores=cpu_count()):
+#     results = Parallel(n_jobs=num_cores,prefer="threads")(delayed(func)(row) for _, row in tqdm(df.iterrows(),total=len(df), desc="Processing rows", ncols=100))
+#     if isinstance(results[0], pd.Series):
+#         return pd.DataFrame(results)
+#     else:
+#         return pd.Series(results)
+
+# all_data_filtered['output'] = parallelize_apply(all_data_filtered,process_row)
+# all_data_filtered
